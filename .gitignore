@@ -16,21 +16,15 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
 # Virtual Environment
 venv/
 env/
 ENV/
 .venv
-env.bak/
-venv.bak/
-.env.example
 
 # IDEs
 .vscode/
@@ -38,30 +32,19 @@ venv.bak/
 *.swp
 *.swo
 *~
-.DS_Store
 
 # Environment variables
 .env
 .env.local
-.env.*.local
 
 # Database
 *.db
 *.sqlite3
 data/
-*.sql
 
-# ML Models - HuggingFace cache and downloaded models
-/models/
-!models/.gitkeep
-*.bin
-*.pt
-*.pth
+# ML Models (large files)
+models/
 *.h5
-*.onnx
-*.pkl
-*.pickle
-*.safetensors
 
 # Jupyter
 .ipynb_checkpoints/
@@ -72,48 +55,11 @@ data/
 htmlcov/
 .pytest_cache/
 .tox/
-.nox/
-coverage.xml
-*.cover
-.hypothesis/
-
-# Logs
-*.log
-logs/
-*.log.*
 
 # OS
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Temporary files
-*.tmp
-*.temp
-.cache/
-*.bak
-
-# Docker
-*.dockerignore
-.docker/
-
-# Documentation builds
-docs/_build/
-site/
-
-# PyCharm
-.idea/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
+# Logs
+*.log
+logs/

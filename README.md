@@ -61,6 +61,14 @@ POST /api/v1/analyze
 {
   "text": "I love this product! It's amazing."
 }
+
+Response:
+{
+  "text": "I love this product! It's amazing.",
+  "label": "POSITIVE",
+  "score": 0.9987,
+  "timestamp": "2025-01-03T16:30:00Z"
+}
 ```
 
 ### Batch Analysis
@@ -69,11 +77,79 @@ POST /api/v1/batch-analyze
 {
   "texts": ["Great service!", "Terrible experience", "It's okay"]
 }
+
+Response:
+{
+  "total_analyzed": 3,
+  "results": [...],
+  "processing_time_ms": 125.5
+}
 ```
 
-### Get Analysis History
+### Health Check
 ```bash
-GET /api/v1/history?limit=10
+GET /api/v1/health
+
+Response:
+{
+  "status": "healthy",
+  "model_loaded": true,
+  "model_info": {...}
+}
+```
+
+### Model Info
+```bash
+GET /api/v1/model-info
+```
+
+### Analysis History
+```bash
+GET /api/v1/history?page=1&page_size=20&label=POSITIVE
+
+Response:
+{
+  "total": 150,
+  "page": 1,
+  "page_size": 20,
+  "analyses": [...]
+}
+```
+
+### Statistics
+```bash
+GET /api/v1/stats?days=7
+
+Response:
+{
+  "total_analyses": 150,
+  "positive_count": 120,
+  "negative_count": 30,
+  "positive_percentage": 80.0,
+  "negative_percentage": 20.0,
+  "average_score": 0.89,
+  "average_processing_time_ms": 45.2
+}
+```
+
+### Timeline Statistics
+```bash
+GET /api/v1/stats/timeline?days=7
+
+Response:
+{
+  "dates": {
+    "2025-01-01": 10,
+    "2025-01-02": 15,
+    ...
+  },
+  "total": 100
+}
+```
+
+### Search
+```bash
+GET /api/v1/search?q=product&limit=50
 ```
 
 ## 🏗️ Project Structure

@@ -1,6 +1,6 @@
 """
 Sentiment Analysis API - Professional Setup
-Author: Esteban Morales
+Author: Esteban
 """
 
 from setuptools import setup, find_packages
@@ -12,11 +12,11 @@ setup(
     name="sentiment-analysis-api",
     version="0.1.0",
     author="Esteban",
-    author_email="your.estebanmoralesm@outlook.com",
+    author_email="your.email@example.com",
     description="A professional sentiment analysis API using Transformers and FastAPI",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/EstebanM-M/sentiment-analysis-api",
+    url="https://github.com/yourusername/sentiment-analysis-api",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
