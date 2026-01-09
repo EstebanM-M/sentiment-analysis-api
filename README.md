@@ -196,6 +196,42 @@ docker-compose up --build
 - **Framework**: HuggingFace Transformers
 - **Performance**: ~95% accuracy on SST-2 benchmark
 
+## 🚀 Deployment
+
+### Production Deployment
+
+This API is production-ready and can be deployed to:
+
+**Option 1: Render (Recommended - Free)**
+- See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for step-by-step instructions
+- Free tier includes PostgreSQL database
+- Auto-deploy from GitHub
+- HTTPS automatic
+
+**Option 2: Railway (Alternative)**
+- See [DEPLOYMENT_RAILWAY.md](DEPLOYMENT_RAILWAY.md) for instructions
+- $5/month free credit
+- Better performance than Render free tier
+
+**Live Demo:** Coming soon
+
+### Quick Deploy to Render
+
+1. Fork this repository
+2. Sign up at [render.com](https://render.com)
+3. Click "New +" → "Web Service"
+4. Connect your GitHub repository
+5. Configure:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `uvicorn api.main:app --host 0.0.0.0 --port $PORT`
+6. Add PostgreSQL database
+7. Connect DATABASE_URL
+8. Deploy!
+
+See full guide in [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
+
+---
+
 ## 🛠️ Tech Stack
 
 - **API Framework**: FastAPI

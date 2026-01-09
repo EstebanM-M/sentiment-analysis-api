@@ -1,0 +1,40 @@
+services:
+  # Web Service (API)
+  - type: web
+    name: sentiment-analysis-api
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sentiment-db
+          property: connectionString
+      - key: API_TITLE
+        value: Sentiment Analysis API
+      - key: API_VERSION
+        value: 0.3.0
+      - key: DEBUG
+        value: false
+      - key: LOG_LEVEL
+        value: INFO
+    
+  # PostgreSQL Database
+  - type: pserv
+    name: sentiment-db
+    env: docker
+    region: oregon
+    plan: free
+    repo: https://github.com/render-examples/postgresql
+    envVars:
+      - key: POSTGRES_DB
+        value: sentiment_db
+      - key: POSTGRES_USER
+        generateValue: true
+      - key: POSTGRES_PASSWORD
+        generateValue: true
