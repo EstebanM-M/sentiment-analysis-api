@@ -40,12 +40,19 @@ async def lifespan(app: FastAPI):
     # Load sentiment analysis model
     logger.info("Loading sentiment analysis model...")
     try:
+        # Import memory optimization
+        from utils.memory_optimization import optimize_memory
+        
         analyzer = get_analyzer(
             model_name=settings.MODEL_NAME,
             cache_dir=settings.MODEL_CACHE_DIR
         )
         logger.info(f"Model loaded successfully: {analyzer.model_name}")
         logger.info(f"Using device: {analyzer.device}")
+        
+        # Optimize memory after loading model
+        optimize_memory()
+        logger.info("Memory optimization applied")
         
         # Store analyzer in app state
         app.state.analyzer = analyzer

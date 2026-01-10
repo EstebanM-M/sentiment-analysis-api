@@ -51,17 +51,29 @@ class SentimentAnalyzer:
         self._load_model()
     
     def _load_model(self):
-        """Load the model and tokenizer"""
+        """Load the model and tokenizer with memory optimization"""
         try:
-            # Create sentiment analysis pipeline
+            import gc
+            
+            # Create sentiment analysis pipeline with memory optimization
             self.pipeline = pipeline(
                 "sentiment-analysis",
                 model=self.model_name,
                 tokenizer=self.model_name,
                 device=self.device,
-                model_kwargs={"cache_dir": self.cache_dir}
+                model_kwargs={
+                    "cache_dir": self.cache_dir,
+                    "torch_dtype": torch.float32,
+                    "low_cpu_mem_usage": True
+                }
             )
-            logger.info("Model loaded successfully")
+            
+            # Clear memory after loading
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            
+            logger.info("Model loaded successfully with memory optimization")
         except Exception as e:
             logger.error(f"Error loading model: {str(e)}")
             raise

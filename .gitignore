@@ -64,6 +64,5 @@ Thumbs.db
 *.log
 logs/
 
-
-#MDs
+#Mds files
 MD/
