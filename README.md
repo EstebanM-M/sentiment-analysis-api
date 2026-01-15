@@ -23,7 +23,7 @@ A production-ready sentiment analysis API built with FastAPI and Transformers, f
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/sentiment-analysis-api.git
+git clone https://github.com/EstebanM-M/sentiment-analysis-api.git
 cd sentiment-analysis-api
 ```
 
